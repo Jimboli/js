@@ -17,19 +17,14 @@ For special characters:
     ) = ,
     . = .  
 */
-let ab = true;
-while (ab == true) {
-    let loop = "";
-    clientSide();
-    setTimeout(() => {
-        loop = prompt("Do you want to try again? (y/n)");
-    }, 3000);
+let b = "y";
 
-    if (loop.toLowerCase() == "y") {
-        ab = true;
-    } else {
-        ab = false;
-    }
+while (b == "y") {
+    clientSide();
+
+    setTimeout(() => {
+        b = prompt("Do you want to try again? (y/n)");
+    }, 3000);
 }
 
 function clientSide() {
