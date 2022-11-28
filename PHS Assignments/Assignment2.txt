@@ -1,0 +1,2 @@
+This is "Draw A Character". The teacher will have you make a character in code.org Game Lab, they will specify the
+instructions.
