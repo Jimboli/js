@@ -17,17 +17,24 @@ For special characters:
     ) = ,
     . = .  
 */
-let b = "y";
+let ab = true;
+while (ab == true) {
+    browser();
 
-while (b == "y") {
-    clientSide();
 
     setTimeout(() => {
-        b = prompt("Do you want to try again? (y/n)");
+        let b = prompt("Do you want to try again? (y/n)");
     }, 3000);
+
+    if (b.toLowerCase() == "y") {
+        console.log(b);
+    } else {
+        ab = false;
+        console.log(b);
+    }
 }
 
-function clientSide() {
+function browser() {
     let question = prompt("Enter your statement to encode: ");
     encoder(question);
 
