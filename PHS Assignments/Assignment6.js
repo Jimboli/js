@@ -15,23 +15,29 @@ For special characters:
     } = -
     ( = +
     ) = ,
-    . = .  
+    . = . 
+    ? = ? 
 */
-let ab = true;
-while (ab == true) {
-    browser();
 
+function loopDLoop () {
+    let ab = true;
 
-    setTimeout(() => {
-        let b = prompt("Do you want to try again? (y/n)");
-    }, 3000);
+    while (ab == true) {
+        browser();
 
-    if (b.toLowerCase() == "y") {
-        console.log(b);
-    } else {
-        ab = false;
-        console.log(b);
+        setTimeout(() => {
+            let b = prompt("Do you want to try again? (y/n)");
+        }, "1000")
+
+        if (b.toLowerCase() == "y") {
+            console.log(b);
+        } else {
+            ab = false;
+            console.log(b);
+        }
     }
+
+    console.log("Thank you for playing!");
 }
 
 function browser() {
@@ -46,7 +52,7 @@ function encoder(statement) {
     let secretMessage = "";
 
     const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const specialCharacters = [":", ";", "{", "}", "(", ")", ".", ",", "+", "-", "!", "[", "]"];
+    const specialCharacters = ["?", ":", ";", "{", "}", "(", ")", ".", ",", "+", "-", "!", "[", "]", "?"];
 
     //Goes through every character in statement
     for (const item of statement) {
@@ -57,12 +63,17 @@ function encoder(statement) {
 
             let secretLetter = letters[oppositeIndex];
             secretMessage += secretLetter;
+
         } else if (specialCharacters.includes(item)) {
             let indexNumber = specialCharacters.indexOf(item);
             let oppositeIndex = specialCharacters.length - (indexNumber + 1);
 
             let secretCharacter = specialCharacters[oppositeIndex];
             secretMessage += secretCharacter;
+
+        } else if (item == " ") {
+            secretMessage += item;
+
         } else {
             alert("You have entered a character we don't recognize, please try again later.");
             throw new Error("If you really want to encode and decode this message, contact Ishan.");
@@ -75,7 +86,7 @@ function decoder(decode) {
     let secretMessage = "";
 
     const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const specialCharacters = [":", ";", "{", "}", "(", ")", ".", ",", "+", "-", "!", "[", "]"];
+    const specialCharacters = ["?", ":", ";", "{", "}", "(", ")", ".", ",", "+", "-", "!", "[", "]", "?"];
 
     for (const item of decode) {
         //IF character is a letter, else it follow the other pattern
@@ -85,12 +96,17 @@ function decoder(decode) {
 
             let secretLetter = letters[oppositeIndex];
             secretMessage += secretLetter;
+
         } else if (specialCharacters.includes(item)) {
             let indexNumber = specialCharacters.indexOf(item);
             let oppositeIndex = specialCharacters.length - (indexNumber + 1);
 
             let secretCharacter = specialCharacters[oppositeIndex];
             secretMessage += secretCharacter;
+
+        } else if (item == " ") {
+            secretMessage += item;
+            
         } else {
             alert("You have entered a character we don't recognize, please try again later.");
             throw new Error("If you really want to encode and decode this message, contact Ishan.");
@@ -98,3 +114,5 @@ function decoder(decode) {
     }
     console.log("Decoded secret message: " + secretMessage);
 }
+
+loopDLoop();
